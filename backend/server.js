@@ -11,8 +11,33 @@ connectDB();
 
 const app = express();
 
+/**
+ * CORS (for Vercel + local dev)
+ * Put this BEFORE routes
+ */
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://student-management-frontend-jlclcve7-rot3ndas-projects.vercel.app",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // allow requests with no origin (Postman/curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error("CORS blocked: " + origin));
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
+// Handle preflight (Safari can be picky)
+app.options("*", cors());
+
 // Middleware
-app.use(cors());
 app.use(express.json()); // Allows JSON in request body
 
 // Test route
