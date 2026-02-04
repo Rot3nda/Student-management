@@ -1,0 +1,152 @@
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+
+* { 
+  box-sizing: border-box; 
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+
+  
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("./assets/pexels-olia-danilevich-5088008.jpg");
+    background-size: cover;        /* makes image fill screen */
+    background-position: center;   /* centers image */
+    background-repeat: no-repeat;  /* prevents tiling */
+  
+  
+}
+
+.container {
+  max-width: 900px;
+  width: fit-content;
+  height: fit-content;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+header {
+  margin-bottom: 18px;
+}
+
+header h1 {
+  margin: 0 0 6px;
+  color: white;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 26px;
+}
+
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #c7c9d1;
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #111827;
+  color: white;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: white;
+  color: var(--text);
+}
+
+button.danger {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  color: white;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.rowActions {
+  display: flex;
+  gap: 8px;
+}
+
+
+.outer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom right,transparent,rgba(255, 255, 255, 0.266)); 
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+
