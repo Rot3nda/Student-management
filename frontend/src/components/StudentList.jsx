@@ -1,6 +1,6 @@
 export default function StudentList({ students, onEdit, onDelete }) {
     return (
-      <div className="card">
+      <div id="card" className="card">
         <h2>Students</h2>
   
         <div className="tableWrap">
@@ -22,7 +22,7 @@ export default function StudentList({ students, onEdit, onDelete }) {
                 </tr>
               ) : (
                 students.map((s) => (
-                  <tr key={s._id}>
+                  <tr className="st_list" key={s._id}>
                     <td>{s.fullName}</td>
                     <td>{s.email}</td>
                     <td>{s.course}</td>

@@ -24,8 +24,6 @@ body {
   font-family: Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-
-  
     margin: 0;
     min-height: 100vh;
     background-image: url("./assets/pexels-olia-danilevich-5088008.jpg");
@@ -35,6 +33,17 @@ body {
   
   
 }
+
+.outer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom,transparent,rgba(200, 134, 21, 0.144)); 
+  background-color: rgba(0, 0, 0, 0.284); 
+}
+
 
 .container {
   max-width: 900px;
@@ -46,7 +55,7 @@ body {
 
 header {
   margin-bottom: 18px;
-}
+} 
 
 header h1 {
   margin: 0 0 6px;
@@ -60,12 +69,23 @@ header p {
   color: var(--muted);
 }
 
+.st_list{
+  font-weight: bold;
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px;
   margin-bottom: 26px;
+  background-image: linear-gradient(to top left,transparent,rgb(255, 255, 255)); 
+  background-color: transparent;
+}
+
+#card{
+  border-bottom: 0px solid transparent;
+  border-right: 0px solid transparent;
 }
 
 .grid {
@@ -138,15 +158,5 @@ th {
   gap: 8px;
 }
 
-
-.outer{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(to bottom right,transparent,rgba(255, 255, 255, 0.266)); 
-  background-color: rgba(0, 0, 0, 0.55);
-}
 
 
