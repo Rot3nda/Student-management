@@ -43,7 +43,7 @@ export default function App() {
     <div className="outer">
     <div className="container">
       <header>
-        <h1 className="h">Student Management System</h1>
+        <h1 className="app-title">Student Management System</h1>
       </header>
 
       <StudentForm

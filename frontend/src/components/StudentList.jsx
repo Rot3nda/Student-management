@@ -23,10 +23,10 @@ export default function StudentList({ students, onEdit, onDelete }) {
               ) : (
                 students.map((s) => (
                   <tr className="st_list" key={s._id}>
-                    <td>{s.fullName}</td>
-                    <td>{s.email}</td>
-                    <td>{s.course}</td>
-                    <td className="rowActions">
+                    <td data-label="Full Name">{s.fullName}</td>
+                    <td data-label="Name">{s.email}</td>
+                    <td data-label="Course">{s.course}</td>
+                    <td data-label="Actions" className="rowActions">
                       <button className="secondary" onClick={() => onEdit(s)}>
                         Edit
                       </button>
