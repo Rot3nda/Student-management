@@ -1,18 +1,74 @@
-
 const Student = require("../models/Student");
+
+const normalize = (s) => (s ?? "").trim().replace(/\s+/g, " ").toLowerCase();
+
+function validateStudentInput({ fullName, email, course }) {
+  const name = (fullName ?? "").trim();
+  const mail = (email ?? "").trim();
+  const crs = (course ?? "").trim();
+
+  if (!name || !mail || !crs) {
+    return "fullName, email, and course are required";
+  }
+
+  // 2) full name > 3 chars
+  if (name.length <= 3) {
+    return "Full name is too short, it should have more than 3 characters";
+  }
+
+  // 1) full name must have 2+ parts
+  const parts = name.split(/\s+/).filter(Boolean);
+  if (parts.length < 2) {
+    return "Enter full name";
+  }
+
+  // 3) only letters and spaces between names
+  const lettersAndSpacesOnly = /^[A-Za-z]+(?:\s+[A-Za-z]+)+$/;
+  if (!lettersAndSpacesOnly.test(name)) {
+    return "Full name should  only contain letters";
+  }
+
+  // 4) email structure
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(mail)) {
+    return "Enter a valid email";
+  }
+
+  // 5) course length 3+
+  if (crs.length < 3) {
+    return "Course should contain more than 3 characters";
+  }
+
+  return "";
+}
 
 // POST /api/students
 exports.createStudent = async (req, res) => {
   try {
+    const msg = validateStudentInput(req.body);
+    if (msg) return res.status(400).json({ message: msg });
+
     const { fullName, email, course } = req.body;
-    if (!fullName || !email || !course) {
-      return res.status(400).json({ message: "fullName, email, and course are required" });
+
+    // 6) Duplicate full row check (normalized)
+    const exists = await Student.findOne({
+      fullName: new RegExp(`^${normalize(fullName)}$`, "i"),
+      email: normalize(email),
+      course: new RegExp(`^${normalize(course)}$`, "i"),
+    });
+
+    if (exists) {
+      return res.status(409).json({ message: "Duplicate data is not allowed" });
     }
 
-    const student = await Student.create({ fullName, email, course });
+    const student = await Student.create({
+      fullName: fullName.trim(),
+      email: normalize(email),
+      course: course.trim(),
+    });
+
     res.status(201).json(student);
   } catch (error) {
-    // duplicate email
     if (error.code === 11000) {
       return res.status(409).json({ message: "Email already exists" });
     }
@@ -33,11 +89,30 @@ exports.getStudents = async (req, res) => {
 // PUT /api/students/:id
 exports.updateStudent = async (req, res) => {
   try {
+    const msg = validateStudentInput(req.body);
+    if (msg) return res.status(400).json({ message: msg });
+
     const { fullName, email, course } = req.body;
+
+    // 6) duplicate row check excluding current id
+    const duplicate = await Student.findOne({
+      _id: { $ne: req.params.id },
+      fullName: new RegExp(`^${normalize(fullName)}$`, "i"),
+      email: normalize(email),
+      course: new RegExp(`^${normalize(course)}$`, "i"),
+    });
+
+    if (duplicate) {
+      return res.status(409).json({ message: "Duplicate data is not allowed" });
+    }
 
     const updated = await Student.findByIdAndUpdate(
       req.params.id,
-      { fullName, email, course },
+      {
+        fullName: fullName.trim(),
+        email: normalize(email),
+        course: course.trim(),
+      },
       { new: true, runValidators: true }
     );
 

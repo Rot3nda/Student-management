@@ -50,6 +50,7 @@ export default function App() {
         fetchStudents={fetchStudents}
         selectedStudent={selectedStudent}
         setSelectedStudent={setSelectedStudent}
+        students={students} 
       />
 
       {loading ? (
