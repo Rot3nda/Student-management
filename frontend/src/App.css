@@ -323,7 +323,6 @@ th {
     gap: 12px;
   }
 
-  /* 🔥 FORCE the 3 inputs into ONE vertical column */
   .form-fields,
   .student-form > div,
   form > div {
