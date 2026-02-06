@@ -1,4 +1,4 @@
-const Student = require("../models/Student");
+const Student = require("../models/Student"); 
 
 const normalize = (s) => (s ?? "").trim().replace(/\s+/g, " ").toLowerCase();
 
