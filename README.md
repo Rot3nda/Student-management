@@ -90,7 +90,7 @@ GET http://localhost:5001/api/students
 | Variable     | Description                               |
 |--------------|-------------------------------------------|
 | MONGO_URI    | MongoDB connection string                 |
-| PORT         | Backend server port (default 5000)        |
+| PORT         | Backend server port (default 5001)        |
 
 ---
 
