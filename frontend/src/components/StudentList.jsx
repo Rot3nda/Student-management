@@ -1,7 +1,7 @@
 export default function StudentList({ students, onEdit, onDelete }) {
     return (
       <div id="card" className="card">
-        <h2>Students</h2>
+        <h2>Students</h2> 
   
         <div className="tableWrap">
           <table>
