@@ -73,8 +73,9 @@ cd frontend
 npm install
 ```
 Create frontend/.env (Vite):
+```bash
 VITE_API_BASE_URL=http://localhost:5001/api
-
+```
 ```bash
 npm run dev
 ```
