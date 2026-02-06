@@ -147,8 +147,6 @@ The application uses a MongoDB database with a **Student** collection.
 
 ## visit site at : https://student-management-eight-steel.vercel.app
 
-*(Live demo link can be added here if deployed)*
-
 ---
 
 ## 🧠 Challenges Faced
