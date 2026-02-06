@@ -5,6 +5,8 @@ This system allows users to create, read, update, and delete student records thr
 
 ## visit site at : https://student-management-eight-steel.vercel.app
 
+**Live Demo:** https://student-management-eight-steel.vercel.app
+
 ---
 
 ## 🛠 Tech Stack
