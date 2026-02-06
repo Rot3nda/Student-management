@@ -48,7 +48,7 @@ Create a `.env` file inside the **backend** folder and add:
 
 ```
 MONGO_URI=your_mongodb_connection_string
-PORT=5000
+PORT=5001
 ```
 
 Start the backend server:
@@ -58,7 +58,7 @@ npm start
 ```
 
 Backend runs on:  
-http://localhost:5000
+http://localhost:5001
 
 ---
 
@@ -81,7 +81,7 @@ http://localhost:5173
 
 Get all students:
 
-GET http://localhost:5000/api/students
+GET http://localhost:5001/api/students
 
 ---
 
